@@ -1,0 +1,12 @@
+ {
+     "projects": {
+         "prisma": {
+             "schemaPath": "src/generated/prisma.graphql",
+             "extensions": {
+                 "endpoints": {
+                     "default": "https://vance-prisma-dev-5de4581415.herokuapp.com"
+                 }
+             }
+         }
+     }
+ }
