@@ -1,5 +1,5 @@
 const Query = {
-    users(parent, { query }, { db }, info) {
+    users(parent, { query }, { db, prisma }, info) {
       if (!query) return db.users;
       return db.users.filter(user => {
         return user.name.toLowerCase().includes(query.toLowerCase());

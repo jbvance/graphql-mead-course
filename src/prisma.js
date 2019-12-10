@@ -5,46 +5,48 @@ const prisma = new Prisma({
     endpoint: 'https://vance-prisma-dev-5de4581415.herokuapp.com'
 });
 
-const objectData = (data) => {
-  return JSON.parse(JSON.stringify(data, undefined, 4));
-}
+export { prisma as default };
+
+// const objectData = (data) => {
+//   return JSON.parse(JSON.stringify(data, undefined, 4));
+// }
 
 //prisma.exists.User({ id: 'ck3ympopj001507078ap8q5iv'}).then(exists => console.log(exists));
 
 
 
-const createPostForUser = async (authorId, data) => {
-  const userExists = await prisma.exists.User({ id: authorId });
-  if (!userExists) {
-    throw new Error ('User not found');
-  }
+// const createPostForUser = async (authorId, data) => {
+//   const userExists = await prisma.exists.User({ id: authorId });
+//   if (!userExists) {
+//     throw new Error ('User not found');
+//   }
   
-  const post = await prisma.mutation.createPost({
-    data: {
-      ...data,
-      author: {
-        connect: {
-          id: authorId
-        }
-      }
-    }
-  }, '{ id author { id name email posts { id title published }} }');
+//   const post = await prisma.mutation.createPost({
+//     data: {
+//       ...data,
+//       author: {
+//         connect: {
+//           id: authorId
+//         }
+//       }
+//     }
+//   }, '{ id author { id name email posts { id title published }} }');
    
-  return post.author;  
-};
+//   return post.author;  
+// };
 
 
-const updatePostForUser = async (postId, data) => {
-  const postExists = await prisma.exists.Post({ id: postId });
-  if(!postExists) throw new Error('Post not found');
+// const updatePostForUser = async (postId, data) => {
+//   const postExists = await prisma.exists.Post({ id: postId });
+//   if(!postExists) throw new Error('Post not found');
   
-  const post = await prisma.mutation.updatePost({
-    where: { id: postId },
-    data
-  }, '{ author {  id name email posts { id title published } } }');
+//   const post = await prisma.mutation.updatePost({
+//     where: { id: postId },
+//     data
+//   }, '{ author {  id name email posts { id title published } } }');
  
-  return post.author;
-}
+//   return post.author;
+// }
 
 // updatePostForUser('ck3yv21lh000i0796lui59du4', {
 //   title: 'This is an updated post',
