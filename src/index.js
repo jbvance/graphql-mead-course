@@ -22,13 +22,17 @@ const pubsub = new PubSub();
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
-  context: {
-    db,
-    pubsub,
-    prisma
+  context: (request) => {
+    console.log(request.request.headers);
+    return {
+      db,
+      pubsub,
+      prisma,
+      request
+    }
   }
 });
 
 server.start((deets) => {
-  console.log('The server is up', deets);
+  console.log('The server is up');
 });

@@ -2,7 +2,8 @@ import { Prisma } from 'prisma-binding';
 
 const prisma = new Prisma({
     typeDefs: 'src/generated/prisma.graphql',
-    endpoint: 'https://vance-prisma-dev-5de4581415.herokuapp.com'
+    endpoint: 'https://vance-prisma-dev-5de4581415.herokuapp.com',
+    secret: 'thisismysupersecrettext'
 });
 
 export { prisma as default };

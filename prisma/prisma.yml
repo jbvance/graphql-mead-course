@@ -1,2 +1,3 @@
 endpoint: https://vance-prisma-dev-5de4581415.herokuapp.com
 datamodel: datamodel.prisma
+secret: thisismysupersecrettext
